@@ -15,3 +15,23 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+button {
+  border-radius: 200px;
+  width: 2rem;
+  height: 2rem;
+  border: solid 1px black;
+  background-color: ghostwhite;
+}
+button:hover {
+  cursor: pointer;
+}
+
+article .amount {
+  display: inline;
+  width: 2rem;
+}
+
+article {
+  border-radius: 20px;
+}

@@ -29,7 +29,7 @@ export default function Product(props) {
       <h2>{props.productdisplayname}</h2>
       <p>{props.price}$</p>
       <button onClick={removeValue}> - </button>
-      <span> {stateVariable} </span>
+      <p className="amount"> {stateVariable} </p>
       <button onClick={addValue}> + </button>
     </article>
   );
