@@ -5,26 +5,32 @@ export default function Product(props) {
     border: "2px solid #000",
     margin: "10px",
     textAlign: "center",
-    backgroundColor: props.soldOut ? "red" : "lightgreen",
+    borderColor: props.soldout ? "red" : "lightgreen",
+    padding: "20px",
   };
   const initial = 0;
   const [stateVariable, updaterFunction] = useState(initial);
 
-  function addValue() {
-    updaterFunction((prevCount) => prevCount + 1);
+  function removeValue() {
+    updaterFunction((oldAmount) => {
+      if (oldAmount > 0) {
+        return oldAmount - 1;
+      }
+      return 0;
+    });
   }
 
-  function removeValue() {
-    updaterFunction((prevCount) => prevCount - 1);
+  function addValue() {
+    updaterFunction((oldAmount) => oldAmount + 1);
   }
 
   return (
     <article style={styles}>
       <h2>{props.productdisplayname}</h2>
-      <p>{props.price}</p>
-      <button onClick={addValue}> + </button>
-      <p>{stateVariable}</p>
+      <p>{props.price}$</p>
       <button onClick={removeValue}> - </button>
+      <span> {stateVariable} </span>
+      <button onClick={addValue}> + </button>
     </article>
   );
 }
