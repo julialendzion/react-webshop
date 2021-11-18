@@ -22,6 +22,9 @@ export default function Product(props) {
 
   function addValue() {
     updaterFunction((oldAmount) => oldAmount + 1);
+    props.addToBasket({
+      price: props.price,
+    });
   }
 
   return (

@@ -2,6 +2,7 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import ProductList from "./components/ProductList";
 import Basket from "./components/Basket";
+import { useState } from "react";
 
 function App() {
   const products = [
@@ -157,13 +158,21 @@ function App() {
     },
   ];
 
-  const basket = [1, 2];
+  const [basket, setBasket] = useState([]);
+
+  function addToBasket(product) {
+    setBasket(function (oldBasket) {
+      const nextState = oldBasket.concat(product);
+      return nextState;
+    });
+  }
 
   return (
     <div className="App">
       <Navigation />
-      <ProductList products={products} />
+      <ProductList addToBasket={addToBasket} products={products} />
       <Basket basket={basket} />
+      <button onClick={addToBasket}>Add to basket</button>
     </div>
   );
 }
